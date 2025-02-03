@@ -29,6 +29,33 @@ driver.get(url)
 time.sleep(1)
 
 # todo 進行操作
-id_input_ele = driver.find_elements(By.CSS_SELECTOR, "[name='']")
-pwd_input_ele = driver.find_elements(By.CSS_SELECTOR, "[name='']")
+id_input_ele = driver.find_elements(By.CSS_SELECTOR, "[name='UserNm']")
+pwd_input_ele = driver.find_elements(By.CSS_SELECTOR, "[name='UserPasswd']")
+
+st_id = input("請輸入學號: ")
+st_pwd = input("請輸入密碼: ")
+
+if not st_id or not st_pwd:
+    print("請輸入學號和密碼")
+    exit()
+
+id_input_ele[0].send_keys(st_id)
+pwd_input_ele[0].send_keys(st_pwd)
+
+time.sleep(2)
+
+driver.find_element(By.CSS_SELECTOR, "[name='Submit']").click()
+
+# * 檢查是否有帳號或密碼錯誤的alert
+# if len(driver.find_elements(By.CSS_SELECTOR, "")) > 0:
+#     pass
+
+time.sleep(3)
+
+# * 檢查是否有修改密碼的alert
+if len(driver.find_elements(By.CSS_SELECTOR, "")) > 0:
+    pass
+
+
+# * 點擊歷年成績的連結
 
